@@ -1,10 +1,11 @@
 module.exports = [
   { text: '首页', link: '/' },
+  { text: '导航', link: '/navigation/' },
   {
     text: '编程语言', items: [
       {
         text: 'Python', items: [
-          { text: '基础教程', link: '/docs/01.编程语言/01.Python' },
+          { text: '基础教程', link: '/pages/714aa1/' },
           { text: '代码片段', link: '/pages/0ed101/' },
         ]
       },
@@ -61,8 +62,25 @@ module.exports = [
   },
   { text: '零散知识', link: '/pages/1afd90/' },
   { text: '常用工具', link: '/pages/cc2151/' },
-  { text: '私人领域', link: '/pages/1a3231/' },
   {
     text: '留言区', link: '/message-area/'
+  },
+  {
+    text: '索引', items: [
+      {
+        text: '本站',
+        items: [
+          { text: '分类', link: '/categories/' },
+          { text: '标签', link: '/tags/' },
+          { text: '归档', link: '/archives/' },
+        ]
+      },
+      {
+        text: '我的',
+        items: [
+          { text: '关于', link: '/about/website/introduce/' },
+        ]
+      },
+    ]
   },
 ]

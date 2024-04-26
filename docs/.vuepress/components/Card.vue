@@ -1,41 +1,31 @@
 <template>
   <div>
     <template v-if="cardData[0].title != undefined">
-        <div style="text-align: center; font-weight: 900">{{ cardData[0].title }}</div>
+      <div style="text-align: center; font-weight: 900">{{ cardData[0].title }}</div>
     </template>
     <div class="kbt-row">
-    <div
-      class="card-nav-box"
-      :style="
-        cardListSize == 4
+      <div class="card-nav-box" :style="cardListSize == 4
           ? 'width: 25%;'
           : cardListSize == 2
-          ? 'width: 50%;'
-          : 'width: 33.333%;'
-      "
-      v-for="(item,index) in cardData"
-      :key="index"
-    >
-      <a :href="item.cardSrc" target="_blank">
-        <div class="card-nav-item">
-          <div class="card-nav-title">
-            <img
-              v-if="item.cardImgSrc && item.cardImgSrc != ''"
-              :src="item.cardImgSrc"
-              alt="正在加载 ..."
-              class="card-nav-img"
-            />
-            <p class="card-nav-name" :style="'color:' + carTitleColor">
-              {{ item.cardName }}
-            </p>
+            ? 'width: 50%;'
+            : 'width: 33.333%;'
+        " v-for="(item, index) in cardData" :key="index">
+        <a :href="item.cardSrc" target="_blank">
+          <div class="card-nav-item">
+            <div class="card-nav-title">
+              <img v-if="item.cardImgSrc && item.cardImgSrc != ''" :src="item.cardImgSrc" alt="正在加载 ..."
+                class="card-nav-img" />
+              <p class="card-nav-name" :style="'color:' + carTitleColor">
+                {{ item.cardName }}
+              </p>
+            </div>
+            <div :title="item.cardContent" class="card-nav-content">
+              {{ item.cardContent }}
+            </div>
           </div>
-          <div :title="item.cardContent" class="card-nav-content">
-            {{ item.cardContent }}
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -64,7 +54,7 @@ export default {
   },
   methods: {
     cardHoverColor() {
-      if(!document.querySelector(".card")){
+      if (!document.querySelector(".card")) {
         const carHoverColor = this.carHoverColor;
         let style = document.createElement("style");
         style.className = 'card';
@@ -83,13 +73,16 @@ export default {
   flex-wrap: wrap;
   align-items: flex-start;
 }
+
 .card-nav-box {
   padding: 0 10px 0 10px;
   box-sizing: border-box;
 }
+
 .card-nav-box a:hover {
   text-decoration: none !important;
 }
+
 .card-nav-item {
   min-height: 76px;
   margin-top: 10px;
@@ -100,10 +93,12 @@ export default {
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
   transition: all 0.4s;
 }
+
 .card-nav-item:hover {
   box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.7);
   transform: translateY(-3px) scale(1.01, 1.01);
 }
+
 .card-nav-title {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,9 +108,11 @@ export default {
   line-height: 40px;
   white-space: nowrap;
 }
+
 .card-nav-img {
   height: 38px;
 }
+
 .card-nav-name {
   height: 40px;
   float: right;
@@ -124,6 +121,7 @@ export default {
   line-height: 40px;
   white-space: nowrap;
 }
+
 .card-nav-content {
   margin-top: 10px;
   font-size: 13px;

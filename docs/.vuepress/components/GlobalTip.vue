@@ -2,7 +2,7 @@
 
 <script>
 // 首页是否开启时间消息提示，默认 false。因为首页大图模块已经内置时间消息提示，所以这里不需要开启，如果您不使用首页大图模块，可以将此值设置为 true。
-const indexTip = false;  
+const indexTip = false;
 export default {
   mounted() {
     // 首页不弹出消息提示，因为首页大图模块已经内置首页的消息提示
@@ -14,7 +14,7 @@ export default {
     $route(to, from) {
       let gloablTip = document.getElementsByClassName("gloablTip");
       // 如果已经存在一个消息提示，则不会重新弹出，除非消息提示已经消失
-      if(gloablTip.length <= 0){
+      if (gloablTip.length <= 0) {
         if (indexTip || (this.$route.path != "/" && this.$route.hash == "")) {
           this.bgTimeColor();
         }
@@ -33,35 +33,35 @@ export default {
       div.className = "banner-color";
       if (hours >= 6 && hours < 11) {
         addTip(
-          `早上好呀~~，现在是 ${hours}:${minutes}:${seconds}，吃早餐了吗？😊🤭`,
+          `早上好呀~~，现在是 ${hours}:${minutes}:${seconds}<hr/>吃早餐了吗？😊🤭`,
           "info",
           50,
           4000
         );
       } else if (hours >= 12 && hours <= 16) {
         addTip(
-          `下午好呀~~，现在是 ${hours}:${minutes}:${seconds}，繁忙的下午也要适当休息哦🥤🏀~~`,
+          `下午好呀~~，现在是 ${hours}:${minutes}:${seconds}<hr/>繁忙的下午也要适当休息哦🥤🏀~~`,
           "info",
           50,
           4000
         );
       } else if (hours >= 16 && hours <= 19) {
         addTip(
-          `到黄昏了~~，现在是 ${hours}:${minutes}:${seconds}，该准备吃饭啦🥗🍖~~`,
+          `到黄昏了~~，现在是 ${hours}:${minutes}:${seconds}<hr/>该准备吃饭啦🥗🍖~~`,
           "info",
           50,
           4000
         );
       } else if (hours >= 19 && hours < 24) {
         addTip(
-          `晚上好呀~~，现在是 ${hours}:${minutes}:${seconds}，该准备洗漱睡觉啦🥱😪~~`,
+          `晚上好呀~~，现在是 ${hours}:${minutes}:${seconds}<hr/>该准备洗漱睡觉啦🥱😪~~`,
           "info",
           50,
           4000
         );
       } else if (hours >= 0 && hours < 6) {
         addTip(
-          `别再熬夜了~~，现在是 ${hours}:${minutes}:${seconds}，早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`,
+          `别再熬夜了~~，现在是 ${hours}:${minutes}:${seconds}<hr/>早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`,
           "info",
           50,
           4000
@@ -85,46 +85,46 @@ function addTip(content, type, startHeight = 50, dieTime = 3000) {
   var tip = document.querySelectorAll(".global-tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
-  var top = tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-top");
+  var right = -100; // tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-right");
   // 如果产生两个以上的消息提示，则出现在上一个提示的下面，即高度添加，否则默认 50
-  var lastTop =
-    parseInt(top) +
-    (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
+  var lastright = 10;
+  // parseInt(right) +
+  // (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
 
   let div = document.createElement("div");
   div.className = `global-tip tip-${type} ${time} gloablTip`;
-  div.style.top = parseInt(top) + "px";
-  div.setAttribute("data-top", lastTop);
+  div.style.right = parseInt(right) + "px";
+  div.setAttribute("data-right", lastright);
   if (type == "info" || type == 1) {
-    div.innerHTML = `<i class="iconfont icon-info icon"></i><p class="tip-info-content">${content}</p>`;
+    div.innerHTML = `<i class="iconfont icon-tishi icon"></i><div class="tip-info-content">${content}</div>`;
   } else if (type == "success" || type == 2) {
-    div.innerHTML = `<i class="iconfont icon-dagouyouquan icon"></i><p class="tip-success-content">${content}</p>`;
+    div.innerHTML = `<i class="iconfont icon-chenggong icon"></i><div class="tip-success-content">${content}</div>`;
   } else if (type == "danger" || type == 3) {
-    div.innerHTML = `<i class="iconfont icon-cuowu icon"></i><p class="tip-danger-content">${content}</p>`;
+    div.innerHTML = `<i class="iconfont icon-cuowu icon"></i><div class="tip-danger-content">${content}</div>`;
   } else if (type == "warning" || type == 4) {
-    div.innerHTML = `<i class="iconfont icon-gantanhao icon"></i><p class="tip-warning-content">${content}</p>`;
+    div.innerHTML = `<i class="iconfont icon-jinggao icon"></i><div class="tip-warning-content">${content}</div>`;
   }
   document.body.appendChild(div);
 
   let timeTip = document.getElementsByClassName(time)[0];
   setTimeout(() => {
-    timeTip.style.top = parseInt(lastTop) + "px";
+    timeTip.style.right = parseInt(lastright) + "px";
     timeTip.style.opacity = "1";
   }, 10);
 
   // 消息提示 dieTime 秒后隐藏并被删除
   setTimeout(() => {
-    timeTip.style.top = "0px";
+    timeTip.style.right = "-100px";
     timeTip.style.opacity = "0";
 
     // 下面的所有元素回到各自曾经的出发点
     var allTipElement = nextAllTipElement(timeTip);
     for (let i = 0; i < allTipElement.length; i++) {
       var next = allTipElement[i];
-      var top =
-        parseInt(next.getAttribute("data-top")) - next.offsetHeight - 17;
-      next.setAttribute("data-top", top);
-      next.style.top = top + "px";
+      var right =
+        parseInt(next.getAttribute("data-right")) - next.offsetHeight - 17;
+      next.setAttribute("data-right", right);
+      next.style.right = right + "px";
     }
     setTimeout(() => {
       timeTip.remove();
@@ -149,14 +149,10 @@ function nextAllTipElement(elem) {
 <style>
 /* 提示框元素 */
 .global-tip {
+  top: 70px;
   position: fixed;
-  display: flex;
-  top: -10px;
-  left: 50%;
-  opacity: 0;
-  min-width: 320px;
-  transform: translateX(-50%);
-  transition: opacity 0.3s linear, top 0.4s, transform 0.4s;
+  right: 0px;
+  transition: opacity 0.3s linear, right 0.4s, transform 0.4s;
   z-index: 99999;
   padding: 15px 15px 15px 20px;
   border: 1px solid #ebeef5;
@@ -165,15 +161,24 @@ function nextAllTipElement(elem) {
   line-height: 17px;
 }
 
-.global-tip p {
+.global-tip div {
   line-height: 17px;
   margin: 0;
   font-size: 14px;
 }
 
+.global-tip hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgb(0 0 0 / 11%), rgb(0 0 0 / 42%), rgb(0 0 0 / 7%));
+}
+
 .icon {
   margin-right: 10px;
   line-height: 17px;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  display: block;
 }
 
 .tip-success {

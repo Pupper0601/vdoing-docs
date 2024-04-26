@@ -11,12 +11,12 @@ if (typeof document !== "undefined") {
   (ready = function (t) {
     return (
       a ||
-      "interactive" === document.readyState ||
-      "complete" === document.readyState
+        "interactive" === document.readyState ||
+        "complete" === document.readyState
         ? t.call(document)
         : c.push(function () {
-            return t.call(this);
-          }),
+          return t.call(this);
+        }),
       this
     );
   }),
@@ -27,28 +27,28 @@ if (typeof document !== "undefined") {
     (n = function () {
       a ||
         ((a = !0),
-        e.call(window),
-        document.removeEventListener
-          ? document.removeEventListener("DOMContentLoaded", n, !1)
-          : document.attachEvent &&
+          e.call(window),
+          document.removeEventListener
+            ? document.removeEventListener("DOMContentLoaded", n, !1)
+            : document.attachEvent &&
             (document.detachEvent("onreadystatechange", n),
-            window == window.top && (clearInterval(t), (t = null))));
+              window == window.top && (clearInterval(t), (t = null))));
     }),
     document.addEventListener
       ? document.addEventListener("DOMContentLoaded", n, !1)
       : document.attachEvent &&
-        (document.attachEvent("onreadystatechange", function () {
-          /loaded|complete/.test(document.readyState) && n();
-        }),
+      (document.attachEvent("onreadystatechange", function () {
+        /loaded|complete/.test(document.readyState) && n();
+      }),
         window == window.top &&
-          (t = setInterval(function () {
-            try {
-              a || document.documentElement.doScroll("left");
-            } catch (t) {
-              return;
-            }
-            n();
-          }, 5)));
+        (t = setInterval(function () {
+          try {
+            a || document.documentElement.doScroll("left");
+          } catch (t) {
+            return;
+          }
+          n();
+        }, 5)));
 }
 
 bszCaller = {
@@ -68,9 +68,9 @@ bszCaller = {
         try {
           e(t),
             scriptTag &&
-              scriptTag.parentElement &&
-              scriptTag.parentElement.removeChild &&
-              scriptTag.parentElement.removeChild(scriptTag);
+            scriptTag.parentElement &&
+            scriptTag.parentElement.removeChild &&
+            scriptTag.parentElement.removeChild(scriptTag);
         } catch (t) {
           console.log(t), bszTag.hides();
         }
@@ -100,12 +100,6 @@ bszTag = {
     });
   },
 };
-
-
-// 修复Node同构代码的问题
-// if (typeof document !== "undefined") {
-//   fetch();
-// }
 
 export default () => {
   bszTag && bszTag.hides();

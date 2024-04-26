@@ -43,7 +43,7 @@ export default {
                 throw new Error();
               }
             });
-          } catch (error) {}
+          } catch (error) { }
         }
         if (pageView || pageView == undefined) {
           this.addPageView();
@@ -218,6 +218,7 @@ export default {
   },
   // 防止重写编译时，导致页面信息重复出现问题
   beforeMount() {
+    clearInterval(this.interval);
     this.removeElement(".page-view");
     this.removeElement(".book-words");
     this.removeElement(".reading-time");

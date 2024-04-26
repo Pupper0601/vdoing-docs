@@ -7,18 +7,22 @@
 // .page >*:not(.footer),.card-box
 //   box-shadow: none!important
 
-// .page
-//   @media (min-width $contentWidth + 80)
-//     padding-top $navbarHeight!important
-// .home-wrapper .banner .banner-conent
-//   padding 0 2.9rem
-//   box-sizing border-box
-// .home-wrapper .banner .slide-banner .slide-banner-wrapper .slide-item a
-//   h2
-//     margin-top 2rem
-//     font-size 1.2rem!important
-//   p
-//     padding 0 1rem
+.page
+  .theme-vdoing-wrapper 
+    padding: 1rem 2rem 1rem
+    .right-menu-wrapper
+      margin-right: -272px
+  @media (min-width $contentWidth + 80)
+    padding-top 5.1rem !important
+.home-wrapper .banner .banner-conent
+  padding 0 2.9rem
+  box-sizing border-box
+.home-wrapper .banner .slide-banner .slide-banner-wrapper .slide-item a
+  h2
+    margin-top 2rem
+    font-size 1.2rem!important
+  p
+    padding 0 1rem
 
 // 评论区颜色重置
 // .gt-container
@@ -79,18 +83,18 @@
 //       fill: $accentColor !important;
 
 
-// // 全文搜索框
-// .suggestions
-//   overflow: auto
-//   max-height: calc(100vh - 6rem)
-//   @media (max-width: 719px) {
-//     width: 90vw;
-//     min-width: 90vw!important;
-//     margin-right: -20px;
-//   }
-//   .highlight
-//     color: $accentColor
-//     font-weight: bold
+// 全文搜索框
+.suggestions
+  overflow: auto
+  max-height: calc(100vh - 6rem)
+  @media (max-width: 719px) {
+    width: 90vw;
+    min-width: 90vw!important;
+    margin-right: -20px;
+  }
+  .highlight
+    color: $accentColor
+    font-weight: bold
 
 
 
@@ -156,4 +160,13 @@ body .vuepress-plugin-demo-block__wrapper
       fill: $accentColor !important;
 
 
-// 自定义class
+// 隐藏文章底部栏
+.have-rightmenu
+  .footer
+    display: none
+
+// 隐藏左侧边栏按钮
+.theme-container
+  .navbar
+    .sidebar-button
+      display: none

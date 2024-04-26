@@ -2,10 +2,7 @@
   <!-- Young Kbt -->
   <div class="web-info card-box">
     <div class="webinfo-title">
-      <i
-        class="iconfont icon-award"
-        style="font-size: 0.875rem; font-weight: 900; width: 1.25em"
-      ></i>
+      <i class="iconfont icon-award" style="font-size: 0.875rem; font-weight: 900; width: 1.25em"></i>
       <span>站点信息</span>
     </div>
     <div class="webinfo-item">
@@ -35,8 +32,8 @@
     <div v-if="indexView" class="webinfo-item">
       <div class="webinfo-item-title">本站被访问了：</div>
       <div class="webinfo-content">
-        <span id="busuanzi_value_site_pv" class="web-site-pv"
-          ><i title="正在获取..." class="loading iconfont icon-loading"></i>
+        <span id="busuanzi_value_site_pv" class="web-site-pv"><i title="正在获取..."
+            class="loading iconfont icon-loading"></i>
         </span>
         次
       </div>
@@ -45,8 +42,8 @@
     <div v-if="indexView" class="webinfo-item">
       <div class="webinfo-item-title">您的访问排名：</div>
       <div class="webinfo-content busuanzi">
-        <span id="busuanzi_value_site_uv" class="web-site-uv"
-          ><i title="正在获取..." class="loading iconfont icon-loading"></i>
+        <span id="busuanzi_value_site_uv" class="web-site-uv"><i title="正在获取..."
+            class="loading iconfont icon-loading"></i>
         </span>
         名
       </div>
@@ -212,34 +209,42 @@ export default {
 
 <style scoped>
 .web-info {
+  display: none;
   font-size: 0.875rem;
   padding: 0.95rem;
 }
+
 .webinfo-title {
   text-align: center;
   color: #888;
   font-weight: bold;
   padding: 0 0 10px 0;
 }
+
 .webinfo-item {
   padding: 8px 0 0;
   margin: 0;
 }
+
 .webinfo-item-title {
   display: inline-block;
 }
+
 .webinfo-content {
   display: inline-block;
   float: right;
 }
+
 @keyframes turn {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .loading {
   display: inline-block;
   animation: turn 1s linear infinite;
